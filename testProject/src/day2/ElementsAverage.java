@@ -16,7 +16,7 @@ public class ElementsAverage {
             sum += arr[i];
         }
 
-        int average = sum / num;
+        float average = (float) sum / num;
         System.out.println("This is the average of all the elements : " + average);
     }
 }
