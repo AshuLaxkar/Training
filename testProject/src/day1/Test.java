@@ -1,4 +1,4 @@
-//Write a program to find the largest number in an array?:
+package day1;//Write a program to find the largest number in an array?:
 //
 //        input: [5, 98, 43, 1, 321, 43]
 //
