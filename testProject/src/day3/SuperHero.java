@@ -22,4 +22,26 @@ public class SuperHero {
     public String getSuperPower() {
         return superPower;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+
+    public void setSuperPower(String superPower) {
+        this.superPower = superPower;
+    }
+
+    @Override
+    public String toString() {
+        return "SuperHero{" +
+                "name='" + name + '\'' +
+                ", power='" + power + '\'' +
+                ", superPower='" + superPower + '\'' +
+                '}';
+    }
+
 }
