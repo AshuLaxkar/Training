@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -190,6 +191,20 @@ public class Main {
             System.out.println("User with ID " + id + " not found.");
         }
     }
+    public static void getUserByName(ArrayList<FakeAvatar> fakeAvatars){
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Enter the name to search : ");
+        String searchTerm = scn.nextLine();
+       List<FakeAvatar> searchByFirstName =  fakeAvatars.stream()
+                .filter(avatar-> avatar.getFirstName().equalsIgnoreCase(searchTerm))
+               .collect(Collectors.toList());
+                if(searchByFirstName.isEmpty()){
+                    System.out.println("There is no user with the given name");
+                }else{
+                searchByFirstName.forEach(System.out::println);
+                }
+
+    }
 
     public static void main(String[] args) {
         String filePath = "/Users/Public/Documents/Training/fake_data.csv";
@@ -202,6 +217,7 @@ public class Main {
             System.out.println("Enter 3 to add user");
             System.out.println("Enter 4 to update user");
             System.out.println("Enter 5 to delete user");
+            System.out.println("Enter 6 to search by user name");
             int x = scn.nextInt();
             scn.nextLine();
             switch (x) {
@@ -219,15 +235,18 @@ public class Main {
                     break;
                 case 5: deleteUser(fakeAvatars);
                 break;
+                case 6: getUserByName(fakeAvatars);
+                break;
                 default:
                     System.out.println("You have entered the wrong input");
             }
+            updateCSV(filePath, fakeAvatars);
             System.out.println("Enter 'YES' to start application or 'NO' to quit");
             String s = scn.nextLine();
             if(s.equals("NO")){
                 break;
             }
         }
-        updateCSV(filePath, fakeAvatars);
+
     }
 }
